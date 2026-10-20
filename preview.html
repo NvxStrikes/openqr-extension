@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>OpenQR</title>
+  <link rel="stylesheet" href="preview.css">
+  <script type="module" src="preview.js"></script>
+</head>
+<body>
+  <main class="panel" aria-labelledby="title">
+    <header class="head">
+      <img src="icons/icon-32.png" width="20" height="20" alt="" class="logo">
+      <h1 id="title">QR code</h1>
+      <span id="typeBadge" class="badge" hidden></span>
+    </header>
+
+    <div class="qr-card" id="qrCard" role="img" aria-label="QR code preview">
+      <div id="qr" class="qr"></div>
+      <p id="qrPlaceholder" class="qr-placeholder">Preparing…</p>
+    </div>
+
+    <label for="content" class="label">Encoded content</label>
+    <textarea id="content" class="content" rows="2" readonly spellcheck="false"></textarea>
+    <p id="charCount" class="meta" aria-live="polite"></p>
+
+    <div id="error" class="msg msg-error" role="alert" hidden></div>
+    <ul id="warnings" class="msg msg-warn" role="status" hidden></ul>
+
+    <fieldset class="formats" id="formats">
+      <legend class="label">Download format</legend>
+      <label class="seg"><input type="radio" name="format" value="svg" checked> <span>SVG</span></label>
+      <label class="seg"><input type="radio" name="format" value="png"> <span>PNG</span></label>
+    </fieldset>
+
+    <div class="actions">
+      <button type="button" id="downloadBtn" class="btn btn-primary" disabled>Download</button>
+      <button type="button" id="copyBtn" class="btn" disabled>Copy image</button>
+    </div>
+    <button type="button" id="customizeBtn" class="btn btn-link-like" disabled aria-describedby="customizeHint">Customize on openqr.tech</button>
+    <p id="customizeHint" class="meta">Colors, logos and frames in the full editor.</p>
+
+    <p id="status" class="status" role="status" aria-live="polite"></p>
+
+    <section id="confirm" class="confirm" hidden aria-labelledby="confirmTitle" role="dialog" aria-modal="false">
+      <h2 id="confirmTitle" tabindex="-1">Open the editor?</h2>
+      <p id="confirmText">Customize opens openqr.tech. Web addresses are checked for safety by our server and Google Safe Browsing, as described in the <a href="https://openqr.tech/privacy.html" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.</p>
+      <div class="actions">
+        <button type="button" id="confirmGo" class="btn btn-primary">Continue to openqr.tech</button>
+        <button type="button" id="confirmCancel" class="btn">Cancel</button>
+      </div>
+    </section>
+
+    <footer class="foot">Made on this device. Nothing is uploaded unless you choose Customize.</footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,236 @@
+:root {
+  --bg: #ffffff;
+  --fg: #1a1a18;
+  --muted: #5f6368;
+  --line: #dadce0;
+  --field: #f8f9fa;
+  --primary: #1a1a18;
+  --primary-fg: #ffffff;
+  --focus: #1a73e8;
+  --warn-bg: #fef7e0;
+  --warn-fg: #6b4e00;
+  --err-bg: #fce8e6;
+  --err-fg: #a50e0e;
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #202124;
+    --fg: #e8eaed;
+    --muted: #9aa0a6;
+    --line: #3c4043;
+    --field: #292a2d;
+    --primary: #e8eaed;
+    --primary-fg: #202124;
+    --focus: #8ab4f8;
+    --warn-bg: #3d3420;
+    --warn-fg: #fdd663;
+    --err-bg: #3c1f1e;
+    --err-fg: #f28b82;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 13px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+.panel {
+  max-width: 380px;
+  margin: 0 auto;
+  padding: 14px 16px 12px;
+}
+
+.head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.logo { border-radius: 4px; }
+
+h1 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0;
+  flex: 1;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--muted);
+}
+
+/* The QR stays black on white in both themes so it always scans. */
+.qr-card {
+  width: 240px;
+  height: 240px;
+  margin: 0 auto 12px;
+  background: #ffffff;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+}
+
+.qr, .qr svg { display: block; width: 100%; height: 100%; }
+.qr:empty { display: none; }
+
+.qr-placeholder {
+  margin: 0;
+  padding: 16px;
+  color: #5f6368;
+  text-align: center;
+}
+
+.qr-card.is-error { background: var(--field); }
+.qr-card.is-error .qr-placeholder { color: var(--muted); }
+
+.label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--muted);
+  margin: 0 0 4px;
+  padding: 0;
+}
+
+.content {
+  width: 100%;
+  resize: none;
+  font: 12px/1.4 ui-monospace, "Cascadia Mono", Consolas, monospace;
+  color: var(--fg);
+  background: var(--field);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px 8px;
+  word-break: break-all;
+}
+
+.meta {
+  margin: 4px 0 8px;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.msg {
+  margin: 0 0 10px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.msg-error { background: var(--err-bg); color: var(--err-fg); }
+.msg-warn { background: var(--warn-bg); color: var(--warn-fg); list-style: none; }
+.msg-warn li + li { margin-top: 4px; }
+
+.formats {
+  border: 0;
+  margin: 0 0 10px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.formats legend { float: left; margin-right: 6px; }
+
+.seg {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px 3px 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.seg input { margin: 0; accent-color: var(--primary); }
+
+.actions {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.btn {
+  flex: 1;
+  min-height: 34px;
+  padding: 6px 12px;
+  font: inherit;
+  font-weight: 600;
+  color: var(--fg);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn:hover:not(:disabled) { background: var(--field); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-fg);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover:not(:disabled) { background: var(--primary); opacity: 0.88; }
+
+.btn-link-like { width: 100%; }
+
+.btn:focus-visible,
+.seg:focus-within,
+.content:focus-visible,
+a:focus-visible,
+h2:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+a { color: var(--focus); }
+
+.status {
+  min-height: 18px;
+  margin: 2px 0 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.confirm {
+  margin: 4px 0 10px;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--field);
+}
+
+.confirm h2 { font-size: 13px; margin: 0 0 4px; }
+.confirm p { margin: 0 0 10px; font-size: 12px; }
+.confirm .actions { margin: 0; }
+
+.foot {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: center;
+  border-top: 1px solid var(--line);
+  padding-top: 8px;
+}
+
+[hidden] { display: none !important; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .btn { transition: background-color 0.12s, opacity 0.12s; }
+}

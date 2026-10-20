@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "OpenQR - QR Code Generator",
+  "short_name": "OpenQR",
+  "version": "0.1.0",
+  "description": "Right-click a page, link or selected text to preview a QR code. Download it as SVG or PNG, or copy it. Generated on your device.",
+  "minimum_chrome_version": "116",
+  "permissions": ["contextMenus", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icons/icon-16.png",
+    "32": "icons/icon-32.png",
+    "48": "icons/icon-48.png",
+    "128": "icons/icon-128.png"
+  },
+  "content_security_policy": {
+    "extension_pages": "default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' blob: data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'"
+  }
+}

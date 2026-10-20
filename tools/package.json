@@ -1,0 +1,21 @@
+{
+  "name": "openqr-extension-tools",
+  "private": true,
+  "description": "Dev-only tooling: vendors custom-qr-code into ../vendor and runs headless checks. Not shipped in the extension package.",
+  "type": "module",
+  "scripts": {
+    "vendor": "node build-vendor.mjs",
+    "check:bundle": "node check-bundle.mjs",
+    "test": "node test-headless.mjs",
+    "parity": "node parity.mjs",
+    "icons": "node make-icons.mjs",
+    "package": "node package-zip.mjs"
+  },
+  "devDependencies": {
+    "custom-qr-code": "2.0.3",
+    "esbuild": "0.25.10",
+    "jsqr": "1.4.0",
+    "playwright": "1.55.0",
+    "pngjs": "7.0.0"
+  }
+}

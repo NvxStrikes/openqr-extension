@@ -1,0 +1,6 @@
+# Dev and build artifacts
+tools/node_modules/
+tools/out/
+*.zip
+.DS_Store
+Thumbs.db
