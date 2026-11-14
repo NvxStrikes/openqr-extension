@@ -1,6 +1,14 @@
 # Dev and build artifacts
+node_modules/
 tools/node_modules/
+out/
 tools/out/
+dist/
+build/
 *.zip
+*.crx
+*.pem
+.env
+.env.*
 .DS_Store
 Thumbs.db
